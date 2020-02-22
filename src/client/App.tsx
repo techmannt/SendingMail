@@ -9,8 +9,6 @@ const App: React.FC<AppProps> = () => {
 
 	const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
 		e.preventDefault();
-		console.log('req.body');
-		console.log({ from, subject, text: message });
 
 		let res = await fetch ('/contact', {
 			method: 'POST',
@@ -42,7 +40,7 @@ const App: React.FC<AppProps> = () => {
 						<input value={subject} onChange={e => setSubject(e.target.value)} type="text" className="form-control my-1" />
 						<label>Message:</label>
 						<textarea value={message} onChange={e => setMessage(e.target.value)} rows={7} className="form-control my-1" />
-						<button onClick={handleClick} className="btn btn-primary btn-lg btn-block mx-auto mt-4 shadow" >Contact Me!</button>
+						<button onClick={handleClick} className="btn btn-primary btn-lg btn-block mx-auto shadow" >Contact Me!</button>
 					</form>
 					{ sent.length === 0 ? null : <aside className="alert alert-success text-center">{sent}</aside> }
 				</div>
